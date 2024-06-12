@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   def index
-    @links = Link.all
+    @links = Link.recent_first
   end
 
   def create
@@ -15,6 +15,6 @@ class LinksController < ApplicationController
   private
 
   def link_params
-    params.require(:link).permit(:url, :title, :description, :image)
+    params.require(:link).permit(:url)
   end
 end
