@@ -10,5 +10,11 @@ class LinksController < ApplicationController
     else
       render :index, status: :unprocessable_entity
     end
-end
+  end
+
+  private
+
+  def link_params
+    params.require(:link).permit(:url, :title, :description, :image)
+  end
 end
