@@ -8,6 +8,7 @@ class LinksController < ApplicationController
     if @link.save
       redirect_to root_path
     else
+      index
       render :index, status: :unprocessable_entity
     end
   end
