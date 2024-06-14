@@ -4,7 +4,12 @@ class Base62
 
 
   def self.encode(number)
-    "0"
+    result = ""
+
+    while number > 0 do
+      result << ALPHABET[number % BASE]
+      number /= BASE
+    end
   end
 
   def self.decode(string)
