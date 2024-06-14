@@ -4,6 +4,7 @@ class Base62
 
 
   def self.encode(number)
+    "0"
   end
 
   def self.decode(string)
