@@ -7,8 +7,10 @@ class Base62
     result = ""
 
     while number > 0 do
-      result << ALPHABET[number % BASE]
-      number /= BASE
+      index = number % 62
+      char = ALPHABET[index]
+      result.prepend(char)
+      number = number / 62
     end
   end
 
