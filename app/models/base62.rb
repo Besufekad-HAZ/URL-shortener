@@ -10,7 +10,7 @@ class Base62
       index = number % BASE
       char = ALPHABET[index]
       result.prepend(char)
-      number = number / 62
+      number = number / BASE
     end
   end
 
