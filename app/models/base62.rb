@@ -1,6 +1,9 @@
 class Base62
+  ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".freeze
+  BASE = ALPHABET.length
+
+
   def self.encode(number)
-    # alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
   end
 
   def self.decode(string)
