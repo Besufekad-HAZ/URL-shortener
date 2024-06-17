@@ -27,26 +27,26 @@ class ShortCodeTest < ActiveSupport::TestCase
 
   # # implement decoding tests
   test "decode 0" do
-    assert_equal "0", ShortCode.decode(0)
+    assert_equal 0, ShortCode.decode("0")
   end
 
   test "decode 1" do
-    assert_equal "1", ShortCode.decode(1)
+    assert_equal 1, ShortCode.decode("1")
   end
 
   test "decode 10" do
-    assert_equal "a", ShortCode.decode(10)
+    assert_equal 10, ShortCode.decode("a")
   end
 
   test "decode 62" do
-    assert_equal "10", ShortCode.decode(62)
+    assert_equal 62, ShortCode.decode("10")
   end
 
   test "decode 1024" do
-    assert_equal "gw", ShortCode.decode(1024)
+    assert_equal 1024, ShortCode.decode("gw")
   end
 
-  test "decode 999_999" do
-    assert_equal "4c91", ShortCode.decode(999_999)
+  test "decode 4c91" do
+    assert_equal 999_999, ShortCode.decode("4c91")
   end
 end
