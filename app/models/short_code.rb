@@ -18,6 +18,14 @@ class ShortCode
   end
 
   def self.decode(string)
-    # alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    return 0 if string.nil? || string.empty?
+    result = 0
+
+    string.each_char do |char|
+      index = ALPHABET.index(char)
+      result = result * BASE + index
+    end
+
+    result
   end
 end
