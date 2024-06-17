@@ -4,7 +4,7 @@ class ShortCode
 
 
   def self.encode(number)
-    return "0" if number.zero? || number.nil?
+    return ALPHABET.first if number.zero? || number.nil?
     result = ""
 
     while number > 0 do
