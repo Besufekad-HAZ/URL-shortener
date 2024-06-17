@@ -21,7 +21,7 @@ class ShortCodeTest < ActiveSupport::TestCase
     assert_equal "gw", ShortCode.encode(1024)
   end
 
-  test "decode 999_999" do
-    assert_equal "4c91", ShortCode.decode("0")
+  test "encode 999_999" do
+    assert_equal "4c91", ShortCode.decode(999_999)
   end
 end
