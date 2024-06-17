@@ -24,6 +24,6 @@ class LinksController < ApplicationController
   end
 
   def set_link
-    @link = Link.find ShortCode.decode(params[:id])
+    @link = Link.find(params[:id])
   end
 end
