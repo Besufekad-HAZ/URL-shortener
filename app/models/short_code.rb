@@ -18,14 +18,14 @@ class ShortCode
   end
 
   def self.decode(string)
-    return 0 if string.nil? || string.empty?
-    result = 0
+    number = 0
 
-    string.each_char do |char|
+    string.reverse.each_char.with_index do |char, index|
+      power = BASE ** index
       index = ALPHABET.index(char)
-      result = result * BASE + index
+      number += index * power
     end
 
-    result
+    number
   end
 end
