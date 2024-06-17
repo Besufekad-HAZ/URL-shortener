@@ -1,4 +1,4 @@
-class Base62
+class ShortCode
   ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".freeze
   BASE = ALPHABET.length
 
@@ -9,9 +9,11 @@ class Base62
     while number > 0 do
       index = number % BASE
       char = ALPHABET[index]
-      result.prepend(char)
+      result.prepend char
       number = number / BASE
     end
+
+    result
   end
 
   def self.decode(string)
