@@ -32,6 +32,7 @@ class LinksController < ApplicationController
   end
 
   def destroy
+    @link.destroy
   end
 
   private
