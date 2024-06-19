@@ -24,6 +24,11 @@ class LinksController < ApplicationController
 
 
   def update
+    if @link.update(link_params)
+      redirect_to @link
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
