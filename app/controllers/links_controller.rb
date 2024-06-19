@@ -17,6 +17,10 @@ class LinksController < ApplicationController
     end
   end
 
+  def edit
+    
+  end
+
   private
 
   def link_params
