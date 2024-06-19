@@ -3,5 +3,3 @@
 <%= link_to "Edit", edit_link_path(@link) %>
 
 <%= line_chart @link.views.group_by_day(:created_at, range: 2.weeks.ago..Time.now, expand_range: true).count %>
-
-User.group_by_day(:created_at, ).count
