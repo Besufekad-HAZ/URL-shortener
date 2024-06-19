@@ -25,7 +25,7 @@ class LinksController < ApplicationController
 
   def update
     if @link.update(link_params)
-      redirect_to @link
+      redirect_to @link, notice: 'Link was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
