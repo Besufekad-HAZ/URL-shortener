@@ -13,6 +13,12 @@
 
   <body>
     <main class="prose mx-auto mt-28 px-5">
+    <% if alert %>
+     <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"> <%= alert %> </p>
+    <% end %>
+
+    <% if notice %>
+    <% end %>
       <%= yield %>
     </main>
   </body>
