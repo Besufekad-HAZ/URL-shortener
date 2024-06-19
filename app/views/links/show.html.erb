@@ -3,6 +3,6 @@
 <h1 class="text-4xl mt-4"><%= @link.url %></h1>
 <%= @link.description %>
 
-<%= link_to "Edit", edit_link_path(@link) ,class:"text-s px-3 mb-5 py-2 rounded bg-gray-100" %>
+<%= link_to "Edit", edit_link_path(@link) ,class:"text-s px-3 mb-5 py-2 rounded bg-gray-100 no-underline" %>
 
 <%= line_chart @link.views.group_by_day(:created_at, range: 2.weeks.ago..Time.now, expand_range: true).count %>
