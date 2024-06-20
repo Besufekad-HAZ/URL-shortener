@@ -1,9 +1,16 @@
-<%= link_to " ⬅️ Back to all links", root_path, class: "no-underline text-s px-3 mb-5 py-2 rounded bg-gray-100" %>
+ <div class="flex justify-between items-center">
+
+ <%= link_to " ⬅️ Back to all links", root_path, class: "no-underline text-s px-3 mb-5 py-2 rounded bg-gray-100" %>
+
+<div class="flex gap-4 items-center">
+    <%= tag.div pluralize(@link.views_count, "view"), class: "text-xs px-3 mb-5 py-2 rounded bg-gray-100 no-underline" %>
+    <%= link_to "Edit", edit_link_path(@link) ,class:"text-xs px-3 mb-5 py-2 rounded bg-gray-100 no-underline" %>
+    </div>
+   </div>
 
 <h1 class="text-4xl mt-4"><%= @link.url %></h1>
 <%= @link.description %>
 
-  <div class="flex justify-between items-center">
   <%= link_to view_path(@link), target: '_blank', data: {turbo: false},class:"text-s px-3 mb-5 py-2 rounded bg-gray-100 no-underline" do %>
     <%= @link.url %>
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block">
@@ -11,8 +18,4 @@
    </svg>
   <% end %>
 
-  <%= tag.div pluralize(@link.views_count, "view"), class: "text-xs px-3 mb-5 py-2 rounded bg-gray-100 no-underline" %>
-
-        <%= link_to "Edit", edit_link_path(@link) ,class:"text-xs px-3 mb-5 py-2 rounded bg-gray-100 no-underline" %>
-   </div>
 <%= line_chart @link.views.group_by_day(:created_at, range: 2.weeks.ago..Time.now, expand_range: true).count %>
