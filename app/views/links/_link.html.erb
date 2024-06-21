@@ -3,7 +3,7 @@
 <div class="grid grid-cols-8 items-center py-4">
   <div class="col-span-5">
 
-  <%= link_to view_path(link), target: '_blank', data: {turbo: false} do %>
+  <%= link_to view_path(link), target: '_blank', data: {turbo: false}, class: "no-underline" do %>
     <%= image_tag "https://www.google.com/s2/favicons?domain=#{link.domain}", class: "inline-block mr-2" %>
     <%= link.url %>
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block">
