@@ -1,6 +1,6 @@
 module FaviconHelper
-  def favicon_image_tag(domain)
-    image_tag google_favicon_url(domain)
+  def favicon_image_tag(domain, **kwargs)
+    image_tag google_favicon_url(domain, **kwargs)
   end
 
   def google_favicon_url(domain)
