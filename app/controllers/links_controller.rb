@@ -15,7 +15,7 @@ class LinksController < ApplicationController
         format.html { redirect_to root_path }
         format.turbo_stream { render turbo_stream: [
           turbo_stream.prepend("links", @link),
-          turbo_stream.replace("link_form", partial: "links/form", locals: { link: Link.new })
+          turbo_stream.replace("link_form", partial: "links/form", locals: { link: Link.new})
         ]
       }
       end
