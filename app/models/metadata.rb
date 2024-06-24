@@ -3,13 +3,13 @@ require "open-uri"
 class Metadata
     attr_reader :doc
     def self.retrieve_from(url)
-      new(URI.parse(url))
+      new(URI.open(url))
     rescue
       new
     end
 
-    def initialize(uri = nil)
-      @doc = Nokogiri::HTML(URI.open(uri))
+    def initialize(html = nil)
+      @doc = Nokogiri::HTML(html)
     end
 
     def attributes
@@ -21,7 +21,7 @@ class Metadata
    end
 
    def title
-     doc.at_css("title").text
+     doc.at_css("title")&.text
    end
 
    def description
