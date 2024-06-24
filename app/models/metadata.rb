@@ -25,11 +25,11 @@ class Metadata
    end
 
    def description
-     doc.at_css("meta[name=description]")&.attributes&.fetch("content")&.text
+     doc.at_css("meta[name=description]")&.attributes&.fetch("content", nil)&.text
    end
 
    def image
-     doc.css("meta[name=og:image]")&.attributes&.fetch("content")&.text
+     doc.css("meta[name=og:image]")&.attributes&.fetch("content", nil)&.text
    end
 
   end
