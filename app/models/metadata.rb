@@ -32,4 +32,8 @@ class Metadata
      doc.at_css("meta[name='og:image']")&.attributes&.fetch("content", nil)&.text
    end
 
+   def meta_content(name)
+     doc.at_css("meta[name='#{name}']")&.attributes&.fetch("content", nil)&.text
+   end
+
   end
