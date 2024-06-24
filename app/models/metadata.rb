@@ -18,7 +18,18 @@ class Metadata
       description: description,
       image: image,
    }
-    end
+   end
 
-    
+   def title
+     doc.at_css("title").text
+   end
+
+   def description
+     doc.css("meta[name=description]").first["content"]
+   end
+
+   def image
+     doc.css("meta[property=og:image]").first["content"]
+   end
+
   end
