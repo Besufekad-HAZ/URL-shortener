@@ -12,11 +12,13 @@ class Metadata
       @doc = Nokogiri::HTML(URI.open(uri))
     end
 
-    def
-    metadata = MetaInspector.new(url)
+    def attributes
     {
-      title: metadata.title,
-      description: metadata.description,
-      image: metadata.image.url
-    }
+      title: title,
+      description: description,
+      image: image,
+   }
+    end
+
+    
   end
