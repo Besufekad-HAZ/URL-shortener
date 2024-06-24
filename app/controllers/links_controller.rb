@@ -9,17 +9,21 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params)
-    if @link.save
-      respond_to do |format|
-        format.html { redirect_to root_path }
-        format.turbo_stream { render turbo_stream: turbo_stream.prepend("links", @link) }
-      end
-    else
-      index
-      render :index, status: :unprocessable_entity
+  @link = Link.new(link_params)
+  if @link.save
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.turbo_stream {
+        render turbo_stream: [
+          turbo_stream.prepend("links", partial: "links/link", locals: { link: @link }),
+          turbo_stream.replace("new_link", partial: "links/form", locals: { link: Link.new })
+        ]
+      }
     end
+  else
+    render :index, status: :unprocessable_entity
   end
+end
 
   def edit
 
