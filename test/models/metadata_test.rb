@@ -9,7 +9,11 @@ class MetadataTest < ActiveSupport::TestCase
     assert_nil Metadata.new.title
   end
 
-  test "description attribute" do
+  test "meta description" do
     assert_equal "Hello", Metadata.new("<meta name=description content=Hello>").description
+  end
+
+  test "missing meta description" do
+    assert_nil Metadata.new.description
   end
 end
