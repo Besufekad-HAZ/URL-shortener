@@ -11,7 +11,17 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     if @link.save
-      redirect_to root_path
+      respond_to do |format|
+        format.turbo_stream
+        format.html
+        format.js
+        format.json
+        format.xml
+        format.any { head :no_content }
+        MetadataJob.perform_later(@link.id)
+        ViewsJob.perform_later(@link.id)
+       redirect_to root_path, notice: 'Link was successfully created.'
+      end
     else
       index
       render :index, status: :unprocessable_entity
