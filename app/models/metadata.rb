@@ -1,6 +1,18 @@
+require "open-uri"
+
 class Metadata
+    attr_reader :doc
     def self.retrieve_from(url)
-      new()
+      new(URI.parse(url))
+    rescue
+      new
+    end
+
+    def initialize(uri = nil)
+      @doc = Nokogiri::HTML(URI.open(uri))
+    end
+
+    def
     metadata = MetaInspector.new(url)
     {
       title: metadata.title,
