@@ -14,13 +14,6 @@ class LinksController < ApplicationController
       respond_to do |format|
         format.html { redirect_to root_path }
         format.turbo_stream { render turbo_stream: turbo_stream.prepend("links", @link) }
-        format.js
-        format.json
-        format.xml
-        format.any { head :no_content }
-        MetadataJob.perform_later(@link.id)
-        ViewsJob.perform_later(@link.id)
-       redirect_to root_path, notice: 'Link was successfully created.'
       end
     else
       index
