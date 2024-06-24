@@ -25,7 +25,7 @@ class Metadata
    end
 
    def description
-     doc.css("meta[name=description]").first["content"]
+     doc.at_css("meta[name=description]")&.attributes&.fetch("content")&.text
    end
 
    def image
