@@ -33,7 +33,7 @@ class Metadata
    end
 
    def meta_tag_content(name, name_attribute: :name)
-     doc.at_css("meta[name='#{name_attribute}']='#{name}']")&.attributes&.fetch("content", nil)&.text
+     doc.at_css("meta[#{name_attribute}='#{name}']")&.attributes&.fetch("content", nil)&.text
    end
 
   end
