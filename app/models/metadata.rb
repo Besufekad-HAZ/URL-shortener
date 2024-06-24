@@ -29,7 +29,7 @@ class Metadata
    end
 
    def image
-     doc.css("meta[name='og:image']")&.attributes&.fetch("content", nil)&.text
+     doc.at_css("meta[name='og:image']")&.attributes&.fetch("content", nil)&.text
    end
 
   end
