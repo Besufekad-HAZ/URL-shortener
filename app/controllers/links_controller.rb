@@ -12,8 +12,8 @@ class LinksController < ApplicationController
     @link = Link.new(link_params)
     if @link.save
       respond_to do |format|
-        format.turbo_stream
-        format.html
+        format.html { redirect_to root_path }
+        format.turbo_stream { render turbo_stream: turbo_stream.prepend("links", @link) }
         format.js
         format.json
         format.xml
