@@ -10,7 +10,7 @@
    </div>
 
 <h1 class="text-4xl mt-4"><%= @link.url %></h1>
-<%= @link.description %>
+<%= tag.div @link.description %>
 
   <%= link_to view_path(@link), target: '_blank', data: {turbo: false},class:"text-s px-3 mb-5 py-2 rounded bg-gray-100 no-underline" do %>
    <%= favicon_image_tag @link.domain, class: "inline-block mr-2" %>
