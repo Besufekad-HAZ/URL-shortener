@@ -17,6 +17,10 @@ export default class extends Controller {
 }
 
   tooltip(message) {
-    this.element.setAttribute("data-bs-title", message)
+    tippy(this.element, {
+      content: message,
+      showOnCreate: true,
+      onHidden: (instance) => instance.destroy()
+    })
   }
 }
