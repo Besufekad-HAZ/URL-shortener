@@ -8,11 +8,15 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <main class="prose mx-auto mt-28 px-5">
+      <%= tag.p alert, class: "bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" if alert %>
+      <%= tag.p notice, class: "bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" if notice %>
       <%= yield %>
     </main>
   </body>
