@@ -11,9 +11,8 @@ export default class extends Controller {
   connect() {
     this.clipboard = new ClipboardJS(this.element)
 
-    this.clipboard.on("success", (e) => {
-      this.element.setAttribute("data-clipboard-text", e.text)
-      this.element.setAttribute("data-clipboard-success", "")
-      this.element.setAttribute("data-clipboard-failure", "")
-  }
+    this.clipboard.on("success", (e) => this.tooltip(this.successMessageValue))
+
+    this.clipboard.on("error", (e) => this.tooltip(this.failureMessageValue))
+}
 }
