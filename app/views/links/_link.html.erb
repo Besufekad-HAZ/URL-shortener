@@ -19,7 +19,7 @@
   </div>
 
    <div class="text-center">
-  <%= link_to "Copy", link, class: "text-xs px-3 mb-5 py-2 rounded bg-gray-100 no-underline" %>
+  <%= button_tag "Copy", class: "text-xs px-3 mb-5 py-2 rounded bg-gray-100 no-underline", data: { controller : "copy-link", action: "turbo:submit-end->copy-link#copy", turbo_frame: dom_id(link)} %>
   </div>
 
   </div>
