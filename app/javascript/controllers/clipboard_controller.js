@@ -15,4 +15,8 @@ export default class extends Controller {
 
     this.clipboard.on("error", (e) => this.tooltip(this.failureMessageValue))
 }
+
+  tooltip(message) {
+    this.element.setAttribute("data-bs-title", message)
+  }
 }
