@@ -78,7 +78,8 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: url_shortener_production
-  username: url_shortener
-  password: <%= ENV["URL_SHORTENER_DATABASE_PASSWORD"] %>
+  # <<: *default
+  # database: url_shortener_production
+  # username: url_shortener
+  # password: <%= ENV["URL_SHORTENER_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>

@@ -224,6 +224,8 @@ GEM
       railties (>= 6.0.0)
     stringio (3.1.0)
     strscan (3.1.0)
+    sucker_punch (3.2.0)
+      concurrent-ruby (~> 1.0)
     tailwindcss-rails (2.6.1)
       railties (>= 7.0.0)
     tailwindcss-rails (2.6.1-aarch64-linux)
@@ -280,6 +282,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
+  sucker_punch (~> 3.2)
   tailwindcss-rails
   turbo-rails
   tzinfo-data
