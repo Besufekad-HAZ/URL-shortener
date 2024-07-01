@@ -1,4 +1,5 @@
 class Link < ApplicationRecord
+  belongs_to :user, optional: true
   has_many :views, dependent: :destroy
 
   scope :recent_first, -> { order(created_at: :desc) }
