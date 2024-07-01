@@ -5,7 +5,7 @@
 <div class="flex gap-4 items-center">
     <%= tag.div pluralize(@link.views_count, "view"), class: "text-xs px-3 mb-5 py-2 rounded bg-gray-100 no-underline" %>
     <%= button_to "Copy", "#", class: " text-xs font-medium mb-5 px-3 py-2 rounded bg-gray-100 no-underline", data: { controller: "clipboard", clipboard_text: view_url(@link) } %>
-    <%= link_to "Edit", edit_link_path(@link) ,class:"text-xs px-3 mb-5 py-2 rounded bg-gray-100 no-underline" %>
+    <%= link_to "Edit", edit_link_path(@link) ,class:"text-xs px-3 mb-5 py-2 rounded bg-gray-100 no-underline" if @link.editable_by?(current_user) %>
     </div>
    </div>
 
