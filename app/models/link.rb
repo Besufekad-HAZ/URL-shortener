@@ -21,7 +21,9 @@ class Link < ApplicationRecord
   URI(url).host rescue StandardError URI::InvalidURIError
  end
 
+ # Returns false if the link is not owned by the user
  def editable_by?(user)
+  return false unless user_id?
   user == self.user
  end
 
