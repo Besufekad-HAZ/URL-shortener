@@ -23,8 +23,7 @@ class Link < ApplicationRecord
 
  # Returns false if the link is not owned by the user
  def editable_by?(user)
-  return false unless user_id?
-  user == self.user
+  user_id? && (user_id == user.id)
  end
 
 end
