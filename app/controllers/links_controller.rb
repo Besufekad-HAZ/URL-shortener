@@ -9,7 +9,8 @@ class LinksController < ApplicationController
   end
 
   def create
-  @link = Link.new(link_params)
+  @link = Link.new(link_params.with_defaults(user: current_user))
+  @link.user = current_user
   if @link.save
     respond_to do |format|
       format.html { redirect_to root_path }

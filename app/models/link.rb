@@ -20,4 +20,9 @@ class Link < ApplicationRecord
  def domain
   URI(url).host rescue StandardError URI::InvalidURIError
  end
+
+ def editable_by?(user)
+  user == self.user
+ end
+
 end
