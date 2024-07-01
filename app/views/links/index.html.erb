@@ -1,5 +1,15 @@
+<div class="flex items-center justify-between">
 <h1>URL Shortener</h1>
 
+<div>
+ <% if user_signed_in? %>
+ <%= link_to "Profile", edit_user_registration_path %>
+ <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+ <% else %>
+ <%= link_to "Sign up", new_user_registration_path %>
+ <%= link_to "Login", new_user_session_path %>
+</div>
+</div>
 <%= render partial: "form", locals: { link: @link} %>
 
 <div id="links" class="mt-5 flex flex-col divide-y divide-gray-200">
