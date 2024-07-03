@@ -11,5 +11,5 @@ two:
   url: https://google.com
   title: Google
   description: World's largest search engine
-  image: MyString
+  image:
   views_count: 1
