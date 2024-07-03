@@ -1,6 +1,12 @@
 require "test_helper"
 
 class LinkTest < ActionDispatch::IntegrationTest
+
+  test "create link requires url" do
+    post links_path, params: { link: { url: "" } }
+    assert_response :unprocessable_entity
+  end
+
   test "create link as guest" do
    post links_path, params: { link: { url: "https://www.google.com" } }
    assert_response :redirect
