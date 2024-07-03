@@ -4,12 +4,12 @@ one:
   url: https://gorails.com
   title: GoRails
   description: Ruby on Rails screencasts for Web Developers
-  image: 
+  image:
   views_count: 1
 
 two:
-  url: MyString
-  title: MyString
-  description: MyString
+  url: https://google.com
+  title: Google
+  description: World's largest search engine
   image: MyString
   views_count: 1
