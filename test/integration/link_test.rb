@@ -2,7 +2,8 @@ require "test_helper"
 
 class LinkTest < ActionDispatch::IntegrationTest
   test "create link as guest" do
-
+   post links_path, params: { link: { url: "https://www.google.com" } }
+   assert_response :redirect
   end
 
   test "create link as user" do
@@ -21,7 +22,7 @@ class LinkTest < ActionDispatch::IntegrationTest
   end
 
   test "can edit user's link as owner" do
-    
+
   end
 
   test "cannot edit another user's link" do
