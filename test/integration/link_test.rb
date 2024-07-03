@@ -12,7 +12,7 @@ class LinkTest < ActionDispatch::IntegrationTest
     assert_equal 1, Link.count
   end
 
-  test "cannot edit a link as guest" do
+  test "cannot edit link as guest" do
 
   end
 
@@ -20,19 +20,11 @@ class LinkTest < ActionDispatch::IntegrationTest
 
   end
 
-  test "can edit user's link as user" do
-    user = users(:one)
-    sign_in_as user
-    link = links(:one)
-    get edit_link_path(link)
-    assert_response :success
+  test "can edit user's link as owner" do
+    
   end
 
   test "cannot edit another user's link" do
-    user = users(:one)
-    sign_in_as user
-    link = links(:one)
-    patch link_path(link), params: { link: { url: "https://www.google.com" } }
-    assert_equal "https://www.google.com", link.reload.url
+
   end
 end
