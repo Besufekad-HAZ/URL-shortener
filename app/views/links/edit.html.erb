@@ -1,8 +1,9 @@
 <h1>Edit Link</h1>
 
-<%= render partial: "form", locals: { link: @link } %>
+<%= render partial: "form", locals: {link: @link} %>
 
-<div class="flex gap-2 item-center mt-4">
-<%= link_to "Cancel", link_path(@link) %>
-or <%= button_to "Delete", @link, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+<div class="mt-4 flex gap-1 items-center">
+  <%= link_to "Cancel", @link %>
+  or
+  <%= button_to "Delete", @link, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
 </div>
