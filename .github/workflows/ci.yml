@@ -35,8 +35,8 @@ jobs:
        bin/rails db:test:prepare
        bin/rails test
     - name: Deploy to Heroku
-      uses: akhileshns/heroku-deploy@latest
+      uses: akhileshns/heroku-deploy@v3.13.15
       with:
         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-        heroku_app_name: your-heroku-app-name
-        heroku_email: your-heroku-email
+        heroku_app_name: url-shortner-bese
+        heroku_email: besurye@gmail.com
