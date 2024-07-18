@@ -34,29 +34,9 @@ jobs:
        bin/rails test:prepare
        bin/rails db:test:prepare
        bin/rails test
-
-  # implement the remaning later
-  # deploy:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-
-  #     - name: Set up Ruby
-  #       uses: ruby/setup-ruby@v1
-  #       with:
-  #         ruby-version: 2.7
-
-  #     - name: Install dependencies
-  #       run: |
-  #         gem install bundler
-  #         bundle install --jobs 4 --retry 3
-
-  #     - name: Deploy to Heroku
-  #       uses: akhileshns/heroku-deploy@v3.12.12
-  #       with:
-  #         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-  #         heroku_app_name: your-heroku-app-name
-  #         heroku_email: your-heroku-email
+    - name: Deploy to Heroku
+      uses: akhileshns/heroku-deploy@latest
+      with:
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: your-heroku-app-name
+        heroku_email: your-heroku-email
