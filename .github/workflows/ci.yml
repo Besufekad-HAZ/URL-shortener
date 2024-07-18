@@ -10,6 +10,7 @@ on:
 
 jobs:
  test:
+  name: Test
   runs-on: ubuntu-latest
   services:
     postgres:
@@ -19,20 +20,20 @@ jobs:
         POSTGRES_PASSWORD: 12345
       ports: ["5432:5432"]
 
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-      - name: Run tests
-        env:
-         DATABASE_URL: postgres://postgres:12345@localhost:5432/test
-         RAILS_ENV : test
-        run:
-         bin/rails test:prepare
-         bin/rails db:test:prepare
-         bin/rails test
+  steps:
+    - uses: actions/checkout@v4
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Run tests
+      env:
+       DATABASE_URL: postgres://postgres:12345@localhost:5432/test
+       RAILS_ENV : test
+      run:
+       bin/rails test:prepare
+       bin/rails db:test:prepare
+       bin/rails test
 
   # implement the remaning later
   # deploy:
