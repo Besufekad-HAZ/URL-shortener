@@ -8,15 +8,17 @@ class LinkTest < ActionDispatch::IntegrationTest
   end
 
   test "create link as guest" do
-   post links_path, params: { link: { url: "https://www.google.com" } }
-   assert_response :ok
+   assert_difference "Link.count" do
+    post links_path(format: :turbo_stream), params: { link: { url: "https://www.google.com" } }
+    assert_response :ok
+    assert_nil Link.last.user_id
   end
 
   test "create link as user" do
-    user = users(:one)
-    sign_in_as user
-    post links_path, params: { link: { url: "https://www.google.com" } }
-    assert_equal 1, Link.count
+    assert_difference "Link.count" do
+    post links_path(format: :turbo_stream), params: { link: { url: "https://www.google.com" } }
+    assert_response :ok
+    assert_equal user.id, Link.last.user_id
   end
 
   test "cannot edit link as guest" do
