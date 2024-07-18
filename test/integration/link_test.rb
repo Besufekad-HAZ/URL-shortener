@@ -16,6 +16,8 @@ class LinkTest < ActionDispatch::IntegrationTest
   end
 
   test "create link as user" do
+    user = users(:one)
+    sign_in user
     assert_difference "Link.count" do
     post links_path(format: :turbo_stream), params: { link: { url: "https://www.google.com" } }
     assert_response :ok
