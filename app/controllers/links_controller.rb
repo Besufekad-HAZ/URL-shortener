@@ -39,8 +39,6 @@ class LinksController < ApplicationController
   def destroy
     @link.destroy
     redirect_to root_path, notice: "Link has been deleted."
-  rescue ActiveRecord::InvalidForeignKey => e
-    redirect_to @link, alert: "Cannot delete link: #{e.message}"
   end
 
   private
