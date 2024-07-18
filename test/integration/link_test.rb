@@ -12,6 +12,7 @@ class LinkTest < ActionDispatch::IntegrationTest
     post links_path(format: :turbo_stream), params: { link: { url: "https://www.google.com" } }
     assert_response :ok
     assert_nil Link.last.user_id
+   end
   end
 
   test "create link as user" do
@@ -19,6 +20,7 @@ class LinkTest < ActionDispatch::IntegrationTest
     post links_path(format: :turbo_stream), params: { link: { url: "https://www.google.com" } }
     assert_response :ok
     assert_equal user.id, Link.last.user_id
+  end
   end
 
   test "cannot edit link as guest" do
