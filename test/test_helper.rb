@@ -10,6 +10,16 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  setup do
+    DatabaseCleaner.start
+  end
+
+  teardown do
+    DatabaseCleaner.clean
+  end
+
+  # Use transactional fixtures
+  self.use_transactional_tests = true
 end
 
 class ActionDispatch::IntegrationTest
