@@ -1,6 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+anonymous:
+  url: https://gorails.com
+  title: GoRails
+  description: Ruby on Rails screencasts for Web Developers
+  image:
+  views_count: 0
+
 one:
+  user: one
   url: https://gorails.com
   title: GoRails
   description: Ruby on Rails screencasts for Web Developers
@@ -8,6 +16,7 @@ one:
   views_count: 1
 
 two:
+  user: two
   url: https://google.com
   title: Google
   description: World's largest search engine

@@ -25,20 +25,31 @@ class LinkTest < ActionDispatch::IntegrationTest
   end
   end
 
-  test "cannot edit link as guest" do
+  test "guest cannot edit link" do
+    get edit_link_path(links(:anonymous))
+    assert_response :redirect
+  end
+
+  test "guest cannot edit user's link" do
     get edit_link_path(links(:one))
     assert_response :redirect
   end
 
-  test "cannot edit user's link as guest" do
-
+  test "users can edit their own link" do
+   sign_in users(:one)
+   get edit_link_path(links(:one))
+   assert_response :ok
   end
 
-  test "can edit user's link as owner" do
-
+  test "user cannot edit another user's link" do
+    sign_in users(:one)
+    get edit_link_path(links(:two))
+    assert_response :redirect
   end
 
-  test "cannot edit another user's link" do
-
+  test "user cannot edit anonymous link" do
+    sign_in users(:one)
+    get edit_link_path(links(:anonymous))
+    assert_response :redirect
   end
 end
