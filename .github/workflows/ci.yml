@@ -30,10 +30,10 @@ jobs:
       env:
        DATABASE_URL: postgres://postgres:12345@localhost:5432/test
        RAILS_ENV : test
-      run:
-       rails test:prepare
-       rails db:test:prepare
-       rails test
+      run: |
+       bin/rails test:prepare
+       bin/rails db:test:prepare
+       bin/rails test
 
   # implement the remaning later
   # deploy:
