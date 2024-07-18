@@ -1,14 +1,37 @@
 require "test_helper"
 
-class LinkTest < ActionDispatch::IntegrationTest
+class LinksTest < ActionDispatch::IntegrationTest
+  test "links index" do
+    get links_path
+    assert_response :ok
+  end
+
+  test "links index pagination" do
+    50.times { Link.create!(url: "https://example.org") }
+    get links_path
+    assert_response :ok
+    assert_select "span", "‹ Prev"
+  end
+
+  test "links index handles pagination overflow" do
+    Link.destroy_all
+    get links_path(page: 2)
+    assert_redirected_to root_path
+  end
+
+  test "link show" do
+    get link_path(links(:anonymous))
+    assert_response :ok
+  end
+
   test "create link requires url" do
-    post links_path, params: { link: { url: "" } }
+    post links_path, params: {link: {url: ""}}
     assert_response :unprocessable_entity
   end
 
   test "create link as guest" do
     assert_difference "Link.count" do
-      post links_path(format: :turbo_stream), params: { link: { url: "https://www.google.com" } }
+      post links_path(format: :turbo_stream), params: {link: {url: "https://google.com"}}
       assert_response :ok
       assert_nil Link.last.user_id
     end
@@ -18,7 +41,7 @@ class LinkTest < ActionDispatch::IntegrationTest
     user = users(:one)
     sign_in user
     assert_difference "Link.count" do
-      post links_path(format: :turbo_stream), params: { link: { url: "https://www.google.com" } }
+      post links_path(format: :turbo_stream), params: {link: {url: "https://google.com"}}
       assert_response :ok
       assert_equal user.id, Link.last.user_id
     end
@@ -34,7 +57,7 @@ class LinkTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "users can edit their own link" do
+  test "user can edit their own link" do
     sign_in users(:one)
     get edit_link_path(links(:one))
     assert_response :ok
