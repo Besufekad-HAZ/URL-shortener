@@ -26,7 +26,8 @@ class LinkTest < ActionDispatch::IntegrationTest
   end
 
   test "cannot edit link as guest" do
-
+    get edit_link_path(links(:one))
+    assert_response :redirect
   end
 
   test "cannot edit user's link as guest" do
