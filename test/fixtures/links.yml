@@ -3,7 +3,7 @@
 anonymous:
   url: https://gorails.com
   title: GoRails
-  description: Ruby on Rails screencasts for Web Developers
+  description: Ruby on Rails Screencasts
   image:
   views_count: 0
 
@@ -11,7 +11,7 @@ one:
   user: one
   url: https://gorails.com
   title: GoRails
-  description: Ruby on Rails screencasts for Web Developers
+  description: Ruby on Rails Screencasts
   image:
   views_count: 1
 
@@ -19,6 +19,6 @@ two:
   user: two
   url: https://google.com
   title: Google
-  description: World's largest search engine
+  description: Search engine
   image:
   views_count: 1
