@@ -10,20 +10,19 @@ class Link < ApplicationRecord
     MetadataJob.perform_later(to_param)
   end
 
-  def self.find(id)
-   super ShortCode.decode(id)
+  def self.find_by_short_code(code)
+    find ShortCode.decode(code)
   end
- def to_param
-   ShortCode.encode(id)
- end
 
- def domain
-  URI(url).host rescue StandardError URI::InvalidURIError
- end
+  def to_param
+    ShortCode.encode(id)
+  end
 
- # Returns false if the link is not owned by the user
- def editable_by?(user)
-  user_id? && (user_id == user&.id)
- end
+  def domain
+    URI(url).host rescue URI::InvalidURIError
+  end
 
+  def editable_by?(user)
+    user_id? && (user_id == user&.id)
+  end
 end
