@@ -1,11 +1,27 @@
-<%= render partial: "form", locals: {link: @link} %>
+<% if @pagy.pages > 1 %>
+  <div class="pt-8 mb-16 text-center">
+    <nav class="flex justify-center">
+      <% if @pagy.prev %>
+        <%= link_to pagy_t('pagy.nav.prev'), url_for(controller: params[:controller], action: params[:action], page: @pagy.prev), class: "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+      <% else %>
+        <span class="bg-white text-gray-400 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-not-allowed">← Prev</span>
+      <% end %>
 
-<div id="links" class="mt-8 flex flex-col divide-y divide-gray-100">
-  <%= render @links %>
+      <% @pagy.series.each do |item| %>
+        <% if item == :gap %>
+          <span class="text-gray-400">...</span>
+        elsif item == @pagy.page %>
+          <span class="bg-orange-100 text-orange-800 font-semibold py-2 px-4 border border-orange-400 rounded shadow">#{item}</span>
+        else %>
+          <%= link_to item, url_for(controller: params[:controller], action: params[:action], page: item), class: "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+        <% end %>
+      <% end %>
 
-  <% if @pagy.pages > 1 %>
-    <div class="pt-8 mb-16 text-center">
-      <%== pagy_nav_tailwind @pagy %>
-    </div>
-  <% end %>
-</div>
+      <% if @pagy.next %>
+        <%= link_to pagy_t('pagy.nav.next'), url_for(controller: params[:controller], action: params[:action], page: @pagy.next), class: "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+      <% else %>
+        <span class="bg-white text-gray-400 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-not-allowed">Next →</span>
+      <% end %>
+    </nav>
+  </div>
+<% end %>
