@@ -28,4 +28,4 @@ This project uses a Continuous Integration/Continuous Deployment (CI/CD) pipelin
 
 This CI/CD pipeline ensures that the URL Shortener application maintains a high standard of quality with every change and is always available to users in its most up-to-date form.
 
-- Check if new changes can be quickly implemented, checked and deployed.
+- Finish the app date: 7/19/24
