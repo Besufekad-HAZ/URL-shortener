@@ -3,24 +3,26 @@ module ApplicationHelper
 
   def pagy_nav_tailwind(pagy)
     html = []
+
     pagy.series.each do |item|
       case item
       when Integer
-        # Check if the item is the current page
         if item == pagy.page
-          # Current page styles
-          html << link_to(item, url_for(page: item), class: "px-4 py-2 border border-gray-300 bg-black text-white hover:bg-gray-700 rounded-md")
+          # Styling for the current (selected) page
+          html << link_to(item, url_for(page: item), class: "px-4 py-2 mx-1 border border-gray-400 bg-blue-500 text-white rounded-md shadow-md")
         else
-          # Other page styles
-          html << link_to(item, url_for(page: item), class: "px-4 py-2 border border-gray-300 bg-black text-gray-700 hover:bg-gray-100 rounded-md")
+          # Styling for other (unselected) pages
+          html << link_to(item, url_for(page: item), class: "px-4 py-2 mx-1 border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 rounded-md shadow-sm")
         end
       when 'gap'
-        html << content_tag(:span, '…', class: "px-4 py-2 border border-gray-300 bg-black text-gray-700")
+        # Styling for the gap
+        html << content_tag(:span, '…', class: "px-4 py-2 mx-1 border border-gray-300 bg-white text-gray-700 rounded-md shadow-sm")
       else
-        # Apply a different style if needed for the prev/next or disabled buttons
-        html << content_tag(:span, item, class: "px-4 py-2 border border-gray-300 bg-white text-gray-700")
+        # Styling for prev/next or disabled buttons (if applicable)
+        html << content_tag(:span, item, class: "px-4 py-2 mx-1 border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 rounded-md shadow-sm")
       end
     end
+
     safe_join(html, ' ')
   end
 end
