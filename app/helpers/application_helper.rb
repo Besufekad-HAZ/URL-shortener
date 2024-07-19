@@ -15,4 +15,3 @@ module ApplicationHelper
     safe_join(html, ' ')
   end
 end
-end
